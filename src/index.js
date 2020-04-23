@@ -13,7 +13,7 @@ const { prisma } = require('./generated/prisma-client')
 
     Mutation: {
         // 2
-        post: (parent, args) => {
+        post: (parent, args, context) => {
           return context.prisma.createLink({
             url: args.url,
             description: args.description,
