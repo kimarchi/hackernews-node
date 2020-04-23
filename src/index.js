@@ -16,9 +16,7 @@ let idCount = links.length
     Query: {
       info: () => `This is the API of a Hackernews Clone`,
       // 2
-      feed: (root, args, context, info) => {
-      return context.prisma.links()
-    },
+      feed: () => links,
     },
 
     Mutation: {
