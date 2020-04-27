@@ -8,7 +8,8 @@ type Mutation {
 }
 
 type Link {
-  id: ID!
+  id: ID! @id
+  createAd: DateTime! @createAt
   description: String!
   url: String!
 }

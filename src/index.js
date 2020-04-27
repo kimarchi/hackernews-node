@@ -1,6 +1,25 @@
 const { GraphQLServer } = require('graphql-yoga')
 const { prisma } = require('./generated/prisma-client')
 
+
+async function main() {
+
+  // Create a new link
+  const newLink = await prisma.createLink({ 
+    url: 'www.prisma.io',
+    description: 'Prisma replaces traditional ORMs',
+  })
+  console.log(`Created new link: ${newLink.url} (ID: ${newLink.id})`)
+
+  // Read all links from the database and print them to the console
+  const allLinks = await prisma.links()
+  console.log(allLinks)
+}
+
+main().catch(e => console.error(e))
+
+/*
+
 // 2  
   const resolvers = {
     Query: {
@@ -19,7 +38,7 @@ const { prisma } = require('./generated/prisma-client')
             description: args.description,
           })
         }
-      },
+      }, 
   }
 
 // 3
@@ -31,3 +50,5 @@ const server = new GraphQLServer({
 
 
 server.start(() => console.log(`Server is running on http://localhost:4000`))
+
+*/
